@@ -67,8 +67,8 @@ function myFunction() {
 
         $('#save').on('click', function() {
             Settings.save('officeldapedit', $('.ldap-settings'));
-            
+            alert("settings xxxx"+Settings.ldap-settings);
         });
-        alert("settings xxxx"+Settings.ldap-settings);
+        
     });
 </script>
