@@ -1,8 +1,8 @@
 {
-	"id": "nodebb-plugin-office-ldap",
+	"id": "nodebb-plugin-office-ldap-edit",
     "name": "Office LDAP",
     "description": "A Office LDAP plugin",
-	"url": "https://github.com/smartameer/nodebb-plugin-office-ldap",
+	"url": "https://github.com/quokkamole/nodebb-plugin-office-ldap-edit",
 	"library": "./index.js",
 	"hooks": [
 		{ "hook": "static:app.load", "method": "init" },
