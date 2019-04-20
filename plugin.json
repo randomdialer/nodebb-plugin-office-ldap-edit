@@ -12,6 +12,6 @@
 	],
 	"templates": "templates",
 	"acpScripts": [
-		"lib/office_ldap.js"
+		"lib/office_ldap_edit.js"
 	]
 }
