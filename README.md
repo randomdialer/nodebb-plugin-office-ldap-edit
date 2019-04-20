@@ -1,3 +1,5 @@
+# THIS IS JUST FOR TESTING PURPOSES. DO NOT USE THIS.
+
 # NodeBB Office LDAP authentication Plugin
 
 This plugin connects LDAP server without admin credentials but using user given username and password at the time of login.
