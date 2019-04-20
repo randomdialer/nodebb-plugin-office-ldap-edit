@@ -30,6 +30,7 @@
                     });
                 }
             }
+            console.log('Hello domain: '+domain);
             return domain;
         },
 
@@ -151,6 +152,7 @@
                     var options = {
                         url: master_config.server + ':' + master_config.port
                     };
+                    console.log('Hello options: '+options);
                     office_ldap_edit.process(options, username, password, next);
                 }
             }));
