@@ -52,6 +52,15 @@
     </div>
   </div>
 </form>
+<p>Click the button to display an alert box.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  alert("Hello! I am an alert box!");
+}
+</script>
 <script>
     require(['settings'], function(Settings) {
         Settings.load('officeldapedit', $('.ldap-settings'));
@@ -60,5 +69,4 @@
             Settings.save('officeldapedit', $('.ldap-settings'));
         });
     });
-    alert("Hello! I am an alert box!!");
 </script>
