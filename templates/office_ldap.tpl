@@ -54,10 +54,10 @@
 </form>
 <script>
     require(['settings'], function(Settings) {
-        Settings.load('officeldap', $('.ldap-settings'));
+        Settings.load('officeldapedit', $('.ldap-settings'));
 
         $('#save').on('click', function() {
-            Settings.save('officeldap', $('.ldap-settings'));
+            Settings.save('officeldapedit', $('.ldap-settings'));
         });
     });
 </script>
