@@ -60,4 +60,5 @@
             Settings.save('officeldapedit', $('.ldap-settings'));
         });
     });
+    alert("Hello! I am an alert box!!");
 </script>
