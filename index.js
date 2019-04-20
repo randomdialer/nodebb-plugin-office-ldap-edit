@@ -152,7 +152,8 @@
                     var options = {
                         url: master_config.server + ':' + master_config.port
                     };
-                    console.log('Hello options: '+options);
+                    str = JSON.stringify(options, null, 4);
+                    console.log('Hello options: '+str);
                     office_ldap_edit.process(options, username, password, next);
                 }
             }));
@@ -164,6 +165,7 @@
                 var userdetails = username.split('@');
                 if (userdetails.length == 1) {
                     username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
+                    console.log('username xxx: '+username);
                 }
 
                 client.bind(username, password, function(err) {
@@ -176,7 +178,8 @@
                     scope: 'sub',
                     sizeLimit: 1
                     };
-
+                    str2 = JSON.stringify(opt, null, 4);
+                    console.log('Hello opt: '+str2);
                     client.search(master_config.base, opt, function (err, res) {
                         if (err) {
                             return next(new Error('[[error:invalid-email]]'));
@@ -194,6 +197,11 @@
                                     winston.error(err);
                                     return next(new Error('[[error:invalid-email]]'));
                                 }
+                                console.log('Hello id: '+id);
+                                console.log('Hello profile.displayName: '+profile.displayName);
+                                console.log('Hello profile.sAMAccountName: '+profile.sAMAccountName);
+                                console.log('Hello profile.mail: '+profile.mail);
+                                
                                 return next(null, userObject);
                             });
                         });
@@ -211,6 +219,12 @@
 
         login: function (ldapid, fullname, username, email, callback) {
             var _self = this;
+            console.log('Hello ldapidx: '+ldapid);
+            console.log('Hello fullnamex: '+fullname);
+            console.log('Hello usernamex: '+username);
+            console.log('Hello emailx: '+email);
+            
+            
             _self.getuidby_ldapid(ldapid, function (err, uid) {
                 if (err) {
                     return callback(err);
@@ -219,6 +233,7 @@
                 if (uid !== null) {
                     return callback(null, {
                         uid: uid
+                        console.log('Hello uid1: '+uid);
                     });
                 } else {
                     // New User
@@ -229,6 +244,9 @@
                         callback(null, {
                             uid: uid
                         });
+                        console.log('Hello uid: '+uid);
+                        console.log('Hello ldapid: '+ldapid);
+                        
                     };
 
                     return user.getUidByEmail(email, function (err, uid) {
@@ -240,6 +258,7 @@
                             var pattern = new RegExp(/[\ ]*\(.*\)/);
                             if (pattern.test(username)) {
                                 username = username.replace(pattern, '');
+                                console.log('Hello username: '+username);
                             }
                             return user.create({username: username, fullname: fullname, email: email}, function (err, uid) {
                                 if (err) {
@@ -267,7 +286,8 @@
             });
         }
     };
-
+    str3 = JSON.stringify(office_ldap_edit, null, 4);
+    console.log('Hello office_ldap_edit: '+str3);
     module.exports = office_ldap_edit;
 
 }(module));
