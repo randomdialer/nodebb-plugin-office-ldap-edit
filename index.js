@@ -233,8 +233,8 @@
                 if (uid !== null) {
                     return callback(null, {
                         uid: uid
-                        console.log('Hello uid1: '+uid);
                     });
+                    console.log('Hello uid1: '+uid);
                 } else {
                     // New User
                     var success = function (uid) {
