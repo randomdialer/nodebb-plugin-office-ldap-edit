@@ -14,8 +14,8 @@
         ldapjs         = require('ldapjs');
 
     var master_config = {};
-    var office_ldap = {
-        name: "Office LDAP",
+    var office_ldap_edit = {
+        name: "Office LDAP Edit",
 
         get_domain: function (base) {
             var domain = '';
@@ -34,7 +34,7 @@
 
         admin: function (custom_header, callback) {
             custom_header.plugins.push({
-                "route": "/plugins/office_ldap",
+                "route": "/plugins/office_ldap_edit",
                 "icon": "fa-cog",
                 "name": "LDAP Settings"
             });
@@ -43,31 +43,31 @@
 
         init: function(params, callback) {
             function render(req, res, next) {
-                res.render('office_ldap', {});
+                res.render('office_ldap_edit', {});
             }
 
-            meta.settings.get('officeldap', function(err, options) {
+            meta.settings.get('officeldapedit', function(err, options) {
                 master_config = options;
             });
-            params.router.get('/admin/plugins/office_ldap', params.middleware.admin.buildHeader, render);
-            params.router.get('/api/admin/plugins/office_ldap', render);
+            params.router.get('/admin/plugins/office_ldap_edit', params.middleware.admin.buildHeader, render);
+            params.router.get('/api/admin/plugins/office_ldap_edit', render);
 
             callback();
         },
 
         get_config: function(options, callback) {
-            meta.settings.get('officeldap', function(err, settings) {
+            meta.settings.get('officeldapedit', function(err, settings) {
                 if (err) {
                     return callback(null, options);
                 }
                 master_config = settings;
-                options.officeldap = settings;
+                options.officeldapedit = settings;
                 callback(null, options);
             });
         },
 
         fetch_config: function(callback) {
-            meta.settings.get('officeldap', function(err, options) {
+            meta.settings.get('officeldapedit', function(err, options) {
                 callback(options);
             });
         },
@@ -139,18 +139,18 @@
                     return next(new Error('[[error:invalid-password]]'));
                 }
                 if (typeof master_config.server === 'undefined') {
-                    office_ldap.fetch_config(function(config) {
+                    office_ldap_edit.fetch_config(function(config) {
                         var options = {
                             url: config.server + ':' + config.port
                         };
                         master_config = config;
-                        office_ldap.process(options, username, password, next);
+                        office_ldap_edit.process(options, username, password, next);
                     });
                 } else {
                     var options = {
                         url: master_config.server + ':' + master_config.port
                     };
-                    office_ldap.process(options, username, password, next);
+                    office_ldap_edit.process(options, username, password, next);
                 }
             }));
         },
@@ -160,7 +160,7 @@
                 var client = ldapjs.createClient(options);
                 var userdetails = username.split('@');
                 if (userdetails.length == 1) {
-                    username = username.trim() + '@' + office_ldap.get_domain(master_config.base);
+                    username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
                 }
 
                 client.bind(username, password, function(err) {
@@ -181,12 +181,12 @@
 
                         res.on('searchEntry', function(entry) {
                             var profile = entry.object;
-                            var id = office_ldap.murmurhash3_32_gc(profile.displayName);
+                            var id = office_ldap_edit.murmurhash3_32_gc(profile.displayName);
                             if (!profile.mail) {
                                 profile.mail = username;
                             }
 
-                            office_ldap.login(id, profile.displayName, profile.sAMAccountName, profile.mail, function (err, userObject) {
+                            office_ldap_edit.login(id, profile.displayName, profile.sAMAccountName, profile.mail, function (err, userObject) {
                                 if (err) {
                                     winston.error(err);
                                     return next(new Error('[[error:invalid-email]]'));
@@ -265,6 +265,6 @@
         }
     };
 
-    module.exports = office_ldap;
+    module.exports = office_ldap_edit;
 
 }(module));
