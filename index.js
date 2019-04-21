@@ -179,7 +179,7 @@
                     scope: 'sub',
                     sizeLimit: 1
                     };
-                    str2 = JSON.stringify(opt, null, 4);
+                    var str2 = JSON.stringify(opt, null, 4);
                     console.log('Hello opt: '+str2);
                     client.search(master_config.base, opt, function (err, res) {
                         if (err) {
