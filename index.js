@@ -247,11 +247,13 @@
                         callback(null, {
                             uid: uid
                         });
-                        console.log('Hello uid: '+uid);
-                        console.log('Hello ldapid: '+ldapid);
+
                         
                     };
-
+                    
+                    console.log('Hello uid: '+uid);
+                    console.log('Hello ldapid: '+ldapid);
+                    
                     return user.getUidByEmail(email, function (err, uid) {
                         if (err) {
                             return callback(err);
