@@ -154,7 +154,8 @@
                 } else {
                     var options = {
                         url: master_config.server + ':' + master_config.port,
-                        strictDN: false
+                        strictDN: false,
+                        bindDN: "dc=hortgenomics,dc=science"
                     };
                     var str = JSON.stringify(options, null, 4);
                     console.log('Hello options: '+str);
@@ -176,8 +177,8 @@
                 var client = ldapjs.createClient(options);
                 var userdetails = username.split('@');
                 if (userdetails.length == 1) {
-                    //username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
-                    username = username.trim();
+                    username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
+                    //username = username.trim();
                     console.log('username xxx: '+username);
                 }
 
