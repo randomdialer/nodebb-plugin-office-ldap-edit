@@ -13,7 +13,7 @@
         local_strategy = module.parent.require('passport-local').Strategy,
         ldapjs         = require('ldapjs');
 
-    console.log('Hello world');
+    console.log('Hello world!!!');
     var master_config = {};
     var office_ldap_edit = {
         name: "Office LDAP Edit",
