@@ -146,7 +146,6 @@
                     office_ldap_edit.fetch_config(function(config) {
                         var options = {
                             url: config.server + ':' + config.port,
-                            strictDN: false
                         };
                         master_config = config;
                         office_ldap_edit.process(options, username, password, next);
