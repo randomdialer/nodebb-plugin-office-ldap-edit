@@ -154,6 +154,8 @@
                     };
                     var str = JSON.stringify(options, null, 4);
                     console.log('Hello options: '+str);
+                    console.log('Hello username yyy: '+username);
+                    console.log('Hello password yyy: '+password);
                     office_ldap_edit.process(options, username, password, next);
                 }
             }));
