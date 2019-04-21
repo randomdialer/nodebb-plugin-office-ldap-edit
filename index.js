@@ -192,6 +192,7 @@
                     scope: 'sub',
                     sizeLimit: 1
                     };
+                    console.log('Hello config filter: '+master_config.filter);
                     var str2 = JSON.stringify(opt, null, 4);
                     console.log('Hello opt: '+str2);
                     client.search(master_config.base, opt, function (err, res) {
