@@ -164,10 +164,10 @@
         process: function(options, username, password, next) {
             try {
                 
-                var str4 = JSON.stringify(options, null, 4);
-                console.log('Hello options zzz: '+str4);
-                console.log('Hello username zzz: '+username);
-                console.log('Hello password zzz: '+password);               
+                //var str4 = JSON.stringify(options, null, 4);
+                //console.log('Hello options zzz: '+str4);
+                //console.log('Hello username zzz: '+username);
+                //console.log('Hello password zzz: '+password);               
                 
                 var client = ldapjs.createClient(options);
                 var userdetails = username.split('@');
