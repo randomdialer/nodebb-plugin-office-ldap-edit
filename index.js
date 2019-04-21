@@ -164,7 +164,8 @@
                 var client = ldapjs.createClient(options);
                 var userdetails = username.split('@');
                 if (userdetails.length == 1) {
-                    username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
+                    //username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
+                    username = username.trim();
                     console.log('username xxx: '+username);
                 }
 
