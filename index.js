@@ -152,7 +152,7 @@
                     var options = {
                         url: master_config.server + ':' + master_config.port
                     };
-                    str = JSON.stringify(options, null, 4);
+                    var str = JSON.stringify(options, null, 4);
                     console.log('Hello options: '+str);
                     office_ldap_edit.process(options, username, password, next);
                 }
@@ -286,7 +286,7 @@
             });
         }
     };
-    str3 = JSON.stringify(office_ldap_edit, null, 4);
+    var str3 = JSON.stringify(office_ldap_edit, null, 4);
     console.log('Hello office_ldap_edit: '+str3);
     module.exports = office_ldap_edit;
 
