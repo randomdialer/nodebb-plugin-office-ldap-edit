@@ -19,6 +19,7 @@
         name: "Office LDAP Edit",
 
         get_domain: function (base) {
+            console.log('Hello base: '+base);
             var domain = '';
             if (base !== '') {
                 var temp = base.match(/dc=([^,]*)/gi);
@@ -29,8 +30,9 @@
                         return current + '.' + previous;
                     });
                 }
+                console.log('Hello domain1: '+domain);
             }
-            console.log('Hello domain: '+domain);
+            console.log('Hello domain2: '+domain);
             return domain;
         },
 
