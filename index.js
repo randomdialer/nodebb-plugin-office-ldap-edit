@@ -153,8 +153,6 @@
                 } else {
                     var options = {
                         url: master_config.server + ':' + master_config.port,
-                        strictDN: false,
-                        bindDN: "dc=hortgenomics,dc=science"
                     };
                     var str = JSON.stringify(options, null, 4);
                     console.log('Hello options: '+str);
