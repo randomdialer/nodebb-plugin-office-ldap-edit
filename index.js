@@ -185,14 +185,15 @@
                         winston.error(err.message);
                         return next(new Error('[[error:invalid-password]]'));
                     }
-                    var opt = {
-                        filter: '(&(' + master_config.filter + '=' + userdetails[0] + '))',
+                    //var opt = {filter: '(&(' + master_config.filter + '=' + userdetails[0] + '))',
+                    var opt = {filter: '(&(' + master_config.filter + userdetails[0] + '))',
                     scope: 'sub',
                     sizeLimit: 1
                     };
                     console.log('Hello config filter: '+master_config.filter);
                     var str2 = JSON.stringify(opt, null, 4);
                     console.log('Hello opt: '+str2);
+                    console.log('Hello master_config.base: '+master_config.base);
                     client.search(master_config.base, opt, function (err, res) {
                         if (err) {
                             return next(new Error('[[error:invalid-email]]'));
