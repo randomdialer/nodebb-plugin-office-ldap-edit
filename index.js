@@ -185,15 +185,18 @@
                         winston.error(err.message);
                         return next(new Error('[[error:invalid-password]]'));
                     }
+                    console.log('username qqq: '+username);
                     //var opt = {filter: '(&(' + master_config.filter + '=' + userdetails[0] + '))',
                     var openldap_filter1= username.split(',');
+                    console.log('openldap_filter1 ccc: '+openldap_filter1[0]);
                     if (openldap_filter1.length == 1) {
                         openldap_filter1=openldap_filter1[0];
                         var openldap_filter2= openldap_filter1.split('=');
                         openldap_filter1=openldap_filter2[1];
                         openldap_filter1 = openldap_filter1.trim();
                         console.log('openldap_filter1 xxx: '+openldap_filter1);
-                    }                 
+                    }   
+                    console.log('Hello config filterxxx: '+master_config.filter);
                     var opt = {filter: '(&(' + master_config.filter + '=' + openldap_filter1 + '))',
                     scope: 'sub',
                     sizeLimit: 1
