@@ -181,6 +181,7 @@
 
                 client.bind(username, password, function(err) {
                     if (err) {
+                        console.log('Hello there was an error ');
                         winston.error(err.message);
                         return next(new Error('[[error:invalid-password]]'));
                     }
