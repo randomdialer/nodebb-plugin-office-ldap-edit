@@ -173,6 +173,7 @@
                 
                 var client = ldapjs.createClient(options);
                 var userdetails = username.split('@');
+                var username2;
                 if (userdetails.length == 1) {
                     //username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
                     username = username.trim();
@@ -181,7 +182,7 @@
                     console.log('username xxx: '+username);
                 }
 
-                client.bind(username, password, function(err) {
+                client.bind(username2, password, function(err) {
                     if (err) {
                         console.log('Hello there was an error ');
                         winston.error(err.message);
