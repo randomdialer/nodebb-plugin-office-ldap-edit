@@ -176,6 +176,8 @@
                 if (userdetails.length == 1) {
                     //username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
                     username = username.trim();
+                    username2 = 'cn='+username+',ou=People,'+master_config.base;
+                    console.log('username2 xxx: '+username2);
                     console.log('username xxx: '+username);
                 }
 
