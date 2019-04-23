@@ -177,12 +177,12 @@
                 if (userdetails.length == 1) {
                     //username = username.trim() + '@' + office_ldap_edit.get_domain(master_config.base);
                     username = username.trim();
-                    username2 = 'cn='+username+',ou=People,'+master_config.base;
+                    username = 'cn='+username+',ou=People,'+master_config.base;
                     console.log('username2 xxx: '+username2);
                     console.log('username xxx: '+username);
                 }
 
-                client.bind(username2, password, function(err) {
+                client.bind(username, password, function(err) {
                     if (err) {
                         console.log('Hello there was an error ');
                         winston.error(err.message);
